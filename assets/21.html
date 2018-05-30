@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML>
+<meta charset="utf-8"/>
+<title>Coffeescript</title>
+<textarea style="display: none;">
+
+# Cake, and Cakefiles
+
+```
+fs = require 'fs'
+
+option '-o', '--output [DIR]', 'directory for compiled code'
+
+task 'build:parser', 'rebuild the Jison parser', (options) ->
+  require 'jison'
+  code = require('./lib/grammar').parser.generate()
+  dir  = options.output or 'lib'
+  fs.writeFile "#{dir}/parser.js", code
+```
+
+```
+var fs;
+
+fs = require('fs');
+
+option('-o', '--output [DIR]', 'directory for compiled code');
+
+task('build:parser', 'rebuild the Jison parser', function(options) {
+  var code, dir;
+  require('jison');
+  code = require('./lib/grammar').parser.generate();
+  dir = options.output || 'lib';
+  return fs.writeFile(dir + "/parser.js", code);
+});
+```
+
+</textarea>
+<script src="strapdown.js"></script>

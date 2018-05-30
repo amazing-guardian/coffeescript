@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML>
+<meta charset="utf-8"/>
+<title>Coffeescript</title>
+<textarea style="display: none;">
+
+# Bound Functions, Generator Functions
+
+```
+Account = (customer, cart) ->
+  @customer = customer
+  @cart = cart
+
+  $('.shopping_cart').on 'click', (event) =>
+    @customer.purchase @cart
+```
+
+```
+var Account;
+
+Account = function(customer, cart) {
+  this.customer = customer;
+  this.cart = cart;
+  return $('.shopping_cart').on('click', (function(_this) {
+    return function(event) {
+      return _this.customer.purchase(_this.cart);
+    };
+  })(this));
+};
+```
+
+***
+
+```
+perfectSquares = ->
+  num = 0
+  loop
+    num += 1
+    yield num * num
+  return
+
+window.ps or= perfectSquares()
+```
+
+```
+var perfectSquares;
+
+perfectSquares = function*() {
+  var num;
+  num = 0;
+  while (true) {
+    num += 1;
+    (yield num * num);
+  }
+};
+
+window.ps || (window.ps = perfectSquares());
+```
+
+</textarea>
+<script src="strapdown.js"></script>

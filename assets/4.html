@@ -1,0 +1,31 @@
+﻿<!DOCTYPE HTML>
+<meta charset="utf-8"/>
+<title>Coffeescript</title>
+<textarea style="display: none;">
+
+# Lexical Scoping and Variable Safety
+
+```
+outer = 1
+changeNumbers = ->
+  inner = -1
+  outer = 10
+inner = changeNumbers()
+```
+
+```
+var changeNumbers, inner, outer;
+
+outer = 1;
+
+changeNumbers = function() {
+  var inner;
+  inner = -1;
+  return outer = 10;
+};
+
+inner = changeNumbers();
+```
+
+</textarea>
+<script src="strapdown.js"></script>

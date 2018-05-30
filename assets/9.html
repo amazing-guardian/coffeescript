@@ -1,0 +1,99 @@
+﻿<!DOCTYPE HTML>
+<meta charset="utf-8"/>
+<title>Coffeescript</title>
+<textarea style="display: none;">
+
+# Everything is an Expression (at least, as much as possible)
+
+```
+grade = (student) ->
+  if student.excellentWork
+    "A+"
+  else if student.okayStuff
+    if student.triedHard then "B" else "B-"
+  else
+    "C"
+
+eldest = if 24 > 21 then "Liz" else "Ike"
+```
+
+```
+var eldest, grade;
+
+grade = function(student) {
+  if (student.excellentWork) {
+    return "A+";
+  } else if (student.okayStuff) {
+    if (student.triedHard) {
+      return "B";
+    } else {
+      return "B-";
+    }
+  } else {
+    return "C";
+  }
+};
+
+eldest = 24 > 21 ? "Liz" : "Ike";
+```
+
+***
+
+```
+six = (one = 1) + (two = 2) + (three = 3)
+```
+
+```
+var one, six, three, two;
+
+six = (one = 1) + (two = 2) + (three = 3);
+```
+
+***
+
+```
+# The first ten global properties.
+
+globals = (name for name of window)[0...10]
+```
+
+```
+var globals, name;
+
+globals = ((function() {
+  var results;
+  results = [];
+  for (name in window) {
+    results.push(name);
+  }
+  return results;
+})()).slice(0, 10);
+```
+
+***
+
+```
+alert(
+  try
+    nonexistent / undefined
+  catch error
+    "And the error is ... #{error}"
+)
+```
+
+```
+var error;
+
+alert((function() {
+  var error1;
+  try {
+    return nonexistent / void 0;
+  } catch (error1) {
+    error = error1;
+    return "And the error is ... " + error;
+  }
+})());
+```
+
+</textarea>
+<script src="strapdown.js"></script>

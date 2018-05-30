@@ -1,0 +1,140 @@
+﻿<!DOCTYPE HTML>
+<meta charset="utf-8"/>
+<title>Coffeescript</title>
+<textarea style="display: none;">
+
+# Destructuring Assignment
+
+```
+theBait   = 1000
+theSwitch = 0
+
+[theBait, theSwitch] = [theSwitch, theBait]
+```
+
+```
+var ref, theBait, theSwitch;
+
+theBait = 1000;
+
+theSwitch = 0;
+
+ref = [theSwitch, theBait], theBait = ref[0], theSwitch
+```
+
+***
+
+```
+weatherReport = (location) ->
+  # Make an Ajax request to fetch the weather...
+  [location, 72, "Mostly Sunny"]
+
+[city, temp, forecast] = weatherReport "Berkeley, CA"
+```
+
+```
+var city, forecast, ref, temp, weatherReport;
+
+weatherReport = function(location) {
+  return [location, 72, "Mostly Sunny"];
+};
+
+ref = weatherReport("Berkeley, CA"), city = ref[0], temp = ref[1], forecast = ref[2];
+```
+
+***
+
+```
+futurists =
+  sculptor: "Umberto Boccioni"
+  painter:  "Vladimir Burliuk"
+  poet:
+    name:   "F.T. Marinetti"
+    address: [
+      "Via Roma 42R"
+      "Bellagio, Italy 22021"
+    ]
+
+{poet: {name, address: [street, city]}} = futurists
+```
+
+```
+var city, futurists, name, ref, ref1, street;
+
+futurists = {
+  sculptor: "Umberto Boccioni",
+  painter: "Vladimir Burliuk",
+  poet: {
+    name: "F.T. Marinetti",
+    address: ["Via Roma 42R", "Bellagio, Italy 22021"]
+  }
+};
+
+ref = futurists.poet, name = ref.name, (ref1 = ref.address, street = ref1[0], city = ref1[1]);
+```
+
+***
+
+```
+tag = "<impossible>"
+
+[open, contents..., close] = tag.split("")
+```
+
+```
+var close, contents, i, open, ref, tag,
+  slice = [].slice;
+
+tag = "<impossible>";
+
+ref = tag.split(""), open = ref[0], contents = 3 <= ref.length ? slice.call(ref, 1, i = ref.length - 1) : (i = 1, []), close = ref[i++];
+```
+
+***
+
+```
+text = "Every literary critic believes he will
+        outwit history and have the last word"
+
+[first, ..., last] = text.split " "
+```
+
+```
+var first, last, ref, text;
+
+text = "Every literary critic believes he will outwit history and have the last word";
+
+ref = text.split(" "), first = ref[0], last = ref[ref.length - 1];
+```
+
+***
+
+```
+class Person
+  constructor: (options) ->
+    {@name, @age, @height = 'average'} = options
+
+tim = new Person name: 'Tim', age: 4
+```
+
+```
+var Person, tim;
+
+Person = (function() {
+  function Person(options) {
+    var ref;
+    this.name = options.name, this.age = options.age, this.height = (ref = options.height) != null ? ref : 'average';
+  }
+
+  return Person;
+
+})();
+
+tim = new Person({
+  name: 'Tim',
+  age: 4
+});
+```
+
+</textarea>
+<script src="strapdown.js"></script>
